@@ -104,3 +104,62 @@ if (true) {
 console.log(global)
 //console.log(primerNombre)
 //console.log(segundoNombre)
+
+console.warn("// ! Tipos de datos objeto")
+
+console.warn("Objetos literales");
+// Los tipo de dato objeto son -> Objetos, Arrays, Funciones
+// Cuando trabajo con tipos de datos objetos puedo usar const
+// * Siempre const a menos que tenga que cambiar el contenido de la variable
+
+const objetoLiteral = {
+    /* clave: valor */
+    /* key: value */
+    nombre: 'Maxi', /* string */
+    apellido: 'Principe', /* string */
+    isTeacher: true, /* boolean */
+    direccion: { 
+        nombre: 'Calle falsa',
+        altura: 745
+    }, /* object (objeto) */
+    coloresFavoritos: [ 
+        {
+            id: 1, 
+            nombre: 'rosa'
+        }, 
+        {
+            id: 2,
+            nombre: 'negro'
+        }
+    ], /* object (array) */
+    saludar: function() {
+        console.log(`Hola soy ${this.nombre} y mi apellido es ${this.apellido}`)
+    } /* object (función) */
+}
+
+console.log(objetoLiteral)
+console.log(typeof objetoLiteral)
+
+// ! Acceso a los valores de la claves
+console.log(objetoLiteral.nombre) // notación punto (dot notation)
+const clave = 'nombre'
+console.log(objetoLiteral[clave]) // notación corchete (bracket notation)
+
+// ! Modificar valor de las claves objeto literal
+
+objetoLiteral.nombre = 'Maximiliano'
+console.log(objetoLiteral)
+objetoLiteral.edad = 22 /* number */
+
+// ! No puedo hacer lo que hacía con let.
+/* objetoLiteral = 'Una cadena'
+console.log(objetoLiteral)
+console.log(typeof objetoLiteral) */
+
+console.warn('// ! acceder a los atributos (claves) del objeto literal')
+
+console.log(objetoLiteral.isTeacher)
+console.log(objetoLiteral.direccion.altura);
+console.log(objetoLiteral.coloresFavoritos)
+console.log(objetoLiteral.coloresFavoritos[0].nombre)
+objetoLiteral.saludar()
