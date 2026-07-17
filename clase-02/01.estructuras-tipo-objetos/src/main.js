@@ -224,3 +224,34 @@ console.warn('// ! Método push()')
 personas.push(personaCuatro)
 
 console.log(personas)
+
+console.log('// ! length')
+// Cantidad de elementos que tenemos dentro de la estructura
+
+console.log(personas.length)
+
+console.log(personas[0]) // el primer elemento siempre va a estar en la posición 0
+console.log(personas[4-1]) // último elemento
+console.log(personas[personas.length-1]) // último elemento
+console.log(personas.at(-1)) // último elemento
+
+console.warn('// ! ¿Cómo diferencio un array de un objeto?')
+
+console.log(typeof producto) // object
+console.log(typeof personas) // object
+console.log(Array.isArray(producto)) // false
+console.log(Array.isArray(personas)) // true
+
+if (Array.isArray(personas)) {
+    const elemento = e => { console.log(e) }
+    personas.forEach(elemento)
+} else {
+    console.log('No es un array')
+}
+
+console.warn('// ! Método pop() -> Quita el último elemento del array')
+
+console.log(personas)
+const elemento = personas.pop()
+console.log(personas)
+console.log(elemento)
