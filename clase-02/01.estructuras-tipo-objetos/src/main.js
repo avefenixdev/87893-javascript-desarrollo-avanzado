@@ -365,6 +365,133 @@ console.warn('// ! -----------------------------------------')
 const clientes = [
     { id: 1, nombre: 'Ana', edad: 22, activo: true},
     { id: 2, nombre: 'Sabrina', edad: 30, activo: true},
-    { id: 3, nombre: 'Andres', edad: 43, activo: false},
+    { id: 3, nombre: 'Andres', edad: 17, activo: false},
     { id: 4, nombre: 'Levi', edad: 28, activo: false},
 ]
+
+console.warn('// ! Método filter() -> Devuelve un nuevo array sin modificar el original con los elementos que cumplen cierta condicion')
+
+// Arquitectura del método
+// const nuevoArray = array.filter(elemento => condición)
+
+/* const usuariosActivos = clientes.filter(c => {
+    // console.log(c)
+
+    if ( c.activo === true ) {
+        //console.log(c)
+        return c
+    }
+}) */
+
+/* const usuariosActivos = clientes.filter(c => {
+    return c.activo
+}) */
+
+const usuariosActivos = clientes.filter(c => c.activo)
+
+console.log(clientes)
+console.log(usuariosActivos)
+
+console.log('---------------------------------')
+
+console.log(clientes)
+
+/* const mayores = clientes.filter(cliente => {
+
+    if ( cliente.edad >= 18) {
+        //console.log(cliente)
+        return cliente
+    }
+
+}) */
+
+const mayores = clientes.filter(cliente => cliente.edad >= 18)
+console.log(mayores)
+
+console.warn('// ! Método reduce()')
+// Reduce todos los elementos a un único valor. Va a poder devovler, un número, un objeto, un array, un cadena
+
+// Anatomía del reduce
+
+// array.reduce(callback, valorInicial})
+
+// array.reduce((acumulador, elemento) => {
+//        return nuevoAcumulador    
+// }, valorInicial)
+
+console.log('Sumatoria')
+
+const numeros = [5, 43, 23]
+
+/* const suma = numeros.reduce((acumulador, numero) => {
+    //console.warn(acumulador)
+    //console.log(numero)
+    return acumulador + numero
+}, 0) */
+
+const suma = numeros.reduce((acumulador, numero) => acumulador + numero, 0)
+
+console.log(suma)
+
+console.log('Contar clientes activos')
+
+console.log(clientes)
+
+/* const cantidad = clientes.reduce((acc, cliente) => {
+    //console.log(cliente)
+    //console.log(acc)
+    if ( cliente.activo === true ) {
+        //console.log(cliente)
+        return acc + 1
+    } else {
+        return acc
+    }
+}, 0) */
+
+/* const cantidad = clientes.reduce((acc, cliente) => {
+    return cliente.activo ? acc + 1 : acc
+}, 0) */
+
+const cantidad = clientes.reduce((acc, cliente) => cliente.activo ? acc + 1 : acc, 0)
+
+console.log(cantidad) // 2
+
+console.log('Devuelve un obj -> Agrupar información')
+
+const agrupacionActivoONoActivo = clientes.reduce((acumulador, cliente) => {
+    //console.log(cliente)
+    //console.log(acumulador)
+    //debugger
+    if (!acumulador[cliente.activo]) {
+        acumulador[cliente.activo] = []
+    } else {
+        console.log('Ya existe')
+    }
+
+    acumulador[cliente.activo].push(cliente.nombre)
+
+    //console.log(acumulador)
+    return acumulador
+
+}, {})
+
+console.log(agrupacionActivoONoActivo)
+
+/* 
+Resultado
+{
+    true: [
+        Ana,
+        Sabrina
+    ],
+    false: [
+        Andres,
+        Levi
+    ]
+}
+*/
+
+/* {
+    true: [],
+    false: []
+} */
