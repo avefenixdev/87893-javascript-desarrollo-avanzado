@@ -304,3 +304,67 @@ const arrayComidasMasIndice = comidas.map(function(comida, indice, array) {
 })
 
 console.log(arrayComidasMasIndice)
+
+console.warn('-------------------')
+
+console.log(personas)
+
+// Quiero agregarle al array una nueva key -> isActive: false
+
+const personasIsActive = personas.map(p => {
+    console.log(p)
+
+    const obj = {
+        ...p,
+        isActive: false
+    }
+
+    // console.log(obj)
+    return obj
+})
+
+/* const personasIsActive = personas.map(p => {
+    return { 
+        ...p, 
+        isActive: false 
+    }
+})
+ */
+/* const personasIsActive = personas.map(p => ({ ...p, isActive: false })) */
+
+console.log(personasIsActive)
+
+console.warn('// ! Spread Operator -> objects | arrays')
+
+console.log('// Objetos')
+
+const objX = {x: 1}
+console.log(objX)
+const objY = { ...objX, y: 2 } 
+// Creando un nuevo objeto -> {}
+// Colocando todas las claves y valores del objX -> ...objX
+// Agregando todo lo que quiera -> y: 2
+console.log(objY)
+
+console.log('// Arrays')
+
+const cuatroNumeros = [2, 7, 9, 1]
+
+console.log(cuatroNumeros)
+
+const ochoNumeros = [...cuatroNumeros, 3, 5, 4, 0]
+
+console.log(ochoNumeros)
+
+const doceNumeros = [...cuatroNumeros, ...ochoNumeros]
+
+console.log(doceNumeros)
+
+console.warn('// ! -----------------------------------------')
+
+const clientes = [
+    { id: 1, nombre: 'Ana', edad: 22, activo: true},
+    { id: 2, nombre: 'Sabrina', edad: 30, activo: true},
+    { id: 3, nombre: 'Andres', edad: 43, activo: false},
+    { id: 4, nombre: 'Levi', edad: 28, activo: false},
+]
