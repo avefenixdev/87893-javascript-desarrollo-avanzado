@@ -1,60 +1,182 @@
 import './style.css'
-import javascriptLogo from './assets/javascript.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${javascriptLogo}" class="framework" alt="JavaScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.js</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
-
-<div class="ticks"></div>
-
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-          <img class="button-icon" src="${javascriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
-
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
-
-setupCounter(document.querySelector('#counter'))
+const producto = {
+  id: "PRD-1001",
+  sku: "NB-001-BLK-42",
+  nombre: "Zapatillas Running Pro",
+  descripcion: "Zapatillas deportivas para entrenamiento y competición.",
+  categoria: {
+    id: 10,
+    nombre: "Calzado",
+    padre: {
+      id: 1,
+      nombre: "Deportes"
+    }
+  },
+  marca: {
+    id: 5,
+    nombre: "SportMax",
+    paisOrigen: "Argentina"
+  },
+  precio: {
+    lista: 129999,
+    oferta: 99999,
+    moneda: "ARS",
+    impuestos: {
+      iva: 21,
+      incluido: true
+    }
+  },
+  stock: {
+    disponible: 42,
+    reservado: 8,
+    deposito: {
+      id: "DEP-01",
+      nombre: "Depósito Central"
+    }
+  },
+  imagenes: [
+    {
+      id: 1,
+      url: "/images/products/zapatilla-frente.jpg",
+      principal: true
+    },
+    {
+      id: 2,
+      url: "/images/products/zapatilla-lateral.jpg",
+      principal: false
+    },
+    {
+      id: 3,
+      url: "/images/products/zapatilla-suela.jpg",
+      principal: false
+    }
+  ],
+  variantes: [
+    {
+      color: "Negro",
+      codigoColor: "#000000",
+      talles: [
+        {
+          talle: 40,
+          stock: 5
+        },
+        {
+          talle: 41,
+          stock: 8
+        },
+        {
+          talle: 42,
+          stock: 10
+        }
+      ]
+    },
+    {
+      color: "Azul",
+      codigoColor: "#1E3A8A",
+      talles: [
+        {
+          talle: 41,
+          stock: 3
+        },
+        {
+          talle: 42,
+          stock: 6
+        }
+      ]
+    }
+  ],
+  atributos: {
+    material: "Mesh",
+    peso: "280g",
+    genero: "Unisex",
+    impermeable: false
+  },
+  especificaciones: [
+    {
+      grupo: "Dimensiones",
+      propiedades: [
+        {
+          nombre: "Alto",
+          valor: "12 cm"
+        },
+        {
+          nombre: "Ancho",
+          valor: "20 cm"
+        }
+      ]
+    },
+    {
+      grupo: "Materiales",
+      propiedades: [
+        {
+          nombre: "Exterior",
+          valor: "Textil"
+        },
+        {
+          nombre: "Suela",
+          valor: "Goma"
+        }
+      ]
+    }
+  ],
+  opiniones: [
+    {
+      id: 1,
+      usuario: {
+        id: 100,
+        nombre: "Juan Pérez"
+      },
+      puntuacion: 5,
+      comentario: "Excelente calidad.",
+      fecha: "2026-07-10"
+    },
+    {
+      id: 2,
+      usuario: {
+        id: 101,
+        nombre: "Ana Gómez"
+      },
+      puntuacion: 4,
+      comentario: "Muy cómodas para correr.",
+      fecha: "2026-07-12"
+    }
+  ],
+  etiquetas: [
+    "running",
+    "deportes",
+    "oferta",
+    "nuevo"
+  ],
+  envio: {
+    gratis: true,
+    tiempoEstimado: {
+      minimoDias: 2,
+      maximoDias: 5
+    },
+    opciones: [
+      {
+        tipo: "Estándar",
+        costo: 0
+      },
+      {
+        tipo: "Express",
+        costo: 4500
+      }
+    ]
+  },
+  vendedor: {
+    id: 300,
+    nombre: "Sport Store",
+    reputacion: {
+      estrellas: 4.8,
+      ventas: 15320
+    },
+    contacto: {
+      email: "ventas@sportstore.com",
+      telefono: "+54 11 1234 5678"
+    }
+  },
+  fechaCreacion: "2026-06-15T09:30:00Z",
+  activo: true
+};
