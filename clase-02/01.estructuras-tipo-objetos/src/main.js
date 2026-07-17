@@ -495,3 +495,23 @@ Resultado
     true: [],
     false: []
 } */
+
+console.log('------------------------------------------------------')
+
+console.warn('Métodos find() - findIndex()')
+
+console.log('Método find()')
+// Devuelve el primer elemento que coincide con la condición
+
+console.log(clientes)
+
+/* const clienteId3 = clientes.find(c => {
+    //console.log(c)
+    if ( c.id === 4 ) {
+        return c
+    }
+}) */
+
+const clienteId3 = clientes.find(c => c.id === 3)
+
+console.log(clienteId3)
