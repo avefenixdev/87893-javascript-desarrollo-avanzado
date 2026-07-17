@@ -180,3 +180,47 @@ const producto = {
   fechaCreacion: "2026-06-15T09:30:00Z",
   activo: true
 };
+
+console.log(producto.imagenes[1].url)
+console.log(producto.precio.impuestos.iva)
+console.log(producto.stock.deposito.nombre)
+console.log(producto.variantes[0].talles[1].talle)
+console.log(producto.especificaciones[1].propiedades[1].valor)
+
+console.warn('// ! Arrays / Arreglos / Vectores')
+/* Es una estructura de datos indexada. */
+
+const personaUno = {
+    nombre: 'Lorena',
+    apellido: 'Lopez'
+}
+
+const personaDos = {
+    nombre: 'Adriana',
+    apellido: 'Gutierrez'
+}
+
+const personaTres = {
+    nombre: 'Rocio',
+    apellido: 'Perez'
+}
+
+const personaCuatro = {
+    nombre: 'Pablo',
+    apellido: 'Diaz'
+}
+
+const personaCinco = {
+    nombre: 'Diego',
+    apellido: 'Hernandez'
+}
+//                    0     ,      1    ,     2
+const personas = [personaUno, personaDos, personaTres]
+
+console.log(personas)
+
+console.warn('// ! Método push()')
+
+personas.push(personaCuatro)
+
+console.log(personas)
