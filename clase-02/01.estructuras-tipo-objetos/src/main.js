@@ -255,3 +255,52 @@ console.log(personas)
 const elemento = personas.pop()
 console.log(personas)
 console.log(elemento)
+
+console.warn('// ! Método join() -> Convierte los elementos de un array en una cadena concatenada')
+
+const productos = ['PC', 'Notebook', 'Celular', 'Tablet']
+const cadenaProductos = productos.join('-')
+console.log(cadenaProductos)
+
+console.warn('// ! Métodos String split()')
+
+const cadena = 'Maxi-Luis-Arturo'
+const arrayCadena = cadena.split('-')
+console.log(arrayCadena)
+
+// https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+console.warn('// ! Métodos String shift()')
+
+const productoEliminado = productos.shift() // PC
+console.log(productoEliminado)
+
+console.warn('// ! Métodos String unshift()')
+
+console.log(productos.length) // 3
+const nuevaCantidadElementos = productos.unshift('PC Gamer')
+console.log(productos)
+console.log(nuevaCantidadElementos) // 4
+
+const comidas = ['Tallarines', 'Asado', 'Helado', 'Canelones', 'Pizza', 'Ravioles', 'Milanesas', 'Torta', 'Shushi'] // 9
+
+console.log(comidas)
+
+console.warn('// ! Método map()')
+// El map recorre el array y generar un nuevo array de la misma dimensión que el array original
+// array original 9 -> nuevo array 9
+const arrayComidasMasIndice = comidas.map(function(comida, indice, array) {
+    console.log(comida)
+    console.log(indice)
+    console.log(array)
+
+    const obj = {
+        comida,
+        id: indice + 1
+    }
+
+    //return comida + indice
+    return obj
+})
+
+console.log(arrayComidasMasIndice)
