@@ -170,3 +170,55 @@ console.warn('// ordenar de mayor a menor')
 
 /* const ordenadosMayorAMenor = clientes.sort((a, b) => b.edad - a.edad)
 console.log(ordenadosMayorAMenor) */
+
+console.warn('-------------------------------------------------')
+
+console.warn('DOM -> Document Object Model')
+
+//console.log(document)
+console.dir(document) // saca un radiografía.
+
+
+console.warn('BOM -> Browser Object Model')
+
+console.log(window)
+
+console.warn('Acceso absoluto a los elementos')
+
+console.log(window.document.children[0].children[1].children[0].children[0])
+
+console.warn('Acceso relativo o directo a los elementos html (nodos html)')
+
+// Métodos para acceder a los nodos html
+console.warn('Métodos tradicionales')
+
+const h1 = document.getElementsByTagName('h1') // Colección de HTMLs (HTMLCollection)
+console.log(h1)
+
+const tituloPrincipal = document.getElementById('titulo-principal') // HTMLElement
+//console.log(tituloPrincipal)
+console.dir(tituloPrincipal)
+
+tituloPrincipal.textContent = 'Esto es una nuevo titulo desde JS'
+
+// Acceder al padre del h1 -> main
+//console.log(tituloPrincipal.parentElement)
+console.dir(tituloPrincipal.parentElement)
+
+// ! Modificando o agregando clases vía JS
+tituloPrincipal.classList.remove('text-blue-500')
+tituloPrincipal.classList.add('text-red-500', 'bg-orange-400', 'cursor-pointer', 'p-4')
+
+// ! Modificando o agregando estilos en línea
+tituloPrincipal.style.color = 'gold'
+tituloPrincipal.style.border = '4px solid red'
+
+// ! ¿Cómo bindeabamos un evento? nodo.addEventListener()
+
+tituloPrincipal.addEventListener('click', () => {
+  tituloPrincipal.classList.toggle('text-red-500')
+})
+
+
+
+console.warn('Métodos modernos')
