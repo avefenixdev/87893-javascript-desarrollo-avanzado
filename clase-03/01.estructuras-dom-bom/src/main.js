@@ -132,3 +132,41 @@ console.log('------------------------------')
 console.warn('Método every()')
 // Si todos cumplen con la condicion
 
+// Compruebo si todos están activos
+const todoActivos = clientes.every(cli => cli.activo)
+console.log(todoActivos)
+
+// Compruebo si todos son mayores de edad
+const todosMayores = clientes.every(cli => {
+  if ( cli.edad >= 18) {
+    return true
+  } else {
+    return false
+  }
+})
+
+console.log(todosMayores);
+
+console.log('------------------------------')
+
+console.warn('Método sort()') 
+
+console.warn('// ordenar de menor a mayor')
+//                                          50  -  22
+
+//const ordenados = clientes.sort((a, b) => a.edad - b.edad) // versión copia
+
+//const ordenados = [...clientes] // versión clonado
+//ordenados.sort((a, b) => a.edad - b.edad)
+const ordenados = [...clientes].sort((a, b) => a.edad - b.edad)
+console.log(ordenados)
+console.log(clientes)
+
+ordenados.pop()
+console.log(ordenados)
+console.log(clientes)
+
+console.warn('// ordenar de mayor a menor')
+
+/* const ordenadosMayorAMenor = clientes.sort((a, b) => b.edad - a.edad)
+console.log(ordenadosMayorAMenor) */
