@@ -93,9 +93,42 @@ const cliente7 = { id: 7, nombre: 'Debora', edad:22, activo: true}
 clientes.splice(2, 0, cliente6, cliente7)
 console.log(clientes)
 
+// estoy editando el usuario con el id: 3
+// pos 2
+//                       0                          1                         2
+// usuarios = [{ id: 1, nombre: 'Luis'}, { id: 2, nombre: 'Juan'}, { id: 3, nombre: 'Max'}]
+// usuarioEditado = { id: 3, nombre: 'Maximiliano' }
+// usuarios.splice(2, 1, usuarioEditado)
+// usuarios = [{ id: 1, nombre: 'Luis'}, { id: 2, nombre: 'Juan'}, { id: 3, nombre: 'Maximiliano' }]
+
 console.log('------------------------------')
 
 console.warn('Método some()')
+// Pregunta si al menos uno cumple con la condición
 
+// Averiguar si hay alguno usuario menor de edad
+const hayMenores = clientes.some(cli => cli.edad < 18)
+console.log(hayMenores) // true o false -> true
 
+// Averiguar si alguno de los clientes está desactivo
+const hayActivos = clientes.some(cli => {
+  if (cli.activo)  { // { id: 1, nombre: 'Ana', edad: 22, activo: true },
+    return true
+  }
+})
+console.log(hayActivos) // si -> true
+
+const hayDesactivos = clientes.some(cli => {
+  // if (!cli.activo)  { // { id: 6, nombre: 'Silvina', edad:44, activo: false}
+  //   return true
+  // }
+  return !cli.activo
+})
+
+console.log(hayDesactivos) // ¿Hay desactivos? -> si
+
+console.log('------------------------------')
+
+console.warn('Método every()')
+// Si todos cumplen con la condicion
 
