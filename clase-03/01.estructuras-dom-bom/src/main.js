@@ -229,3 +229,12 @@ console.warn('Métodos modernos')
 // 6. Agregar un evento que haga que cambie de color el texto del subtitulo. De negro a rojo (text-red-500)
 // Tiempo: 5 minutos 
 
+const subtitulo = document.getElementsByTagName("h2")[0];
+const boton = document.getElementById("btn");
+
+console.log(subtitulo);
+console.log(boton);
+
+boton.addEventListener("click", function () {
+  subtitulo.classList.toggle("text-yellow-500");
+});
