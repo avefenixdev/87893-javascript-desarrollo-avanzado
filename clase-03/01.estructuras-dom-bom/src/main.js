@@ -219,6 +219,13 @@ tituloPrincipal.addEventListener('click', () => {
   tituloPrincipal.classList.toggle('text-red-500')
 })
 
-
-
 console.warn('Métodos modernos')
+
+// 1. Crear un etiqueta h2 -> con el texto hola mundo 
+// 2. Crear un botón -> con el texto cambiar color -> con un id que sea btn
+// 3. Selecionar la etiqueta h2 con el selector de etiquetas -> getElementsByTagName
+// 4. Selecionar el botón por el ID -> getElementById
+// 5. Comprobar que estén selecionados -> console.log()
+// 6. Agregar un evento que haga que cambie de color el texto del subtitulo. De negro a rojo (text-red-500)
+// Tiempo: 5 minutos 
+
