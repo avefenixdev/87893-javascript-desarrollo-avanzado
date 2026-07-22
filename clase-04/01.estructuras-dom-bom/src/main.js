@@ -298,7 +298,7 @@ const personas = [
   { nombre: 'Ana', apellido: 'Gutierrez', edad: 28, activo: true }
 ]
 
-let html = ''
+/* let html = ''
 
 personas.forEach(persona => {
 
@@ -314,4 +314,60 @@ personas.forEach(persona => {
 })
 console.warn(html)
 
-contenedor.innerHTML = html
+contenedor.innerHTML = html */
+/* 
+personas.forEach(persona => {
+
+  console.log(persona)
+
+  const titulo = document.createElement('h3')
+  titulo.classList.add('text-xl')
+  titulo.textContent = `${persona.nombre} ${persona.apellido}`
+  //console.log(titulo)
+  const edad = document.createElement('p')
+  edad.classList.add('text-sm')
+  edad.textContent = `Edad: ${persona.edad}`
+  //console.log(edad)
+  const activo = document.createElement('p')
+  activo.classList.add('text-red-500')
+  activo.textContent = `Activo: ${persona.activo ? 'Si' : 'No'}`
+  //console.log(activo)
+
+  contenedor.appendChild(titulo)
+  contenedor.appendChild(edad)
+  contenedor.appendChild(activo)
+
+}) */
+
+// https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment
+
+console.warn('-----------------------------------------')
+
+const fragmento = new DocumentFragment();
+
+personas.forEach(persona => {
+
+  console.log(persona)
+
+  const titulo = document.createElement('h3')
+  titulo.classList.add('text-xl')
+  titulo.textContent = `${persona.nombre} ${persona.apellido}`
+  //console.log(titulo)
+  const edad = document.createElement('p')
+  edad.classList.add('text-sm')
+  edad.textContent = `Edad: ${persona.edad}`
+  //console.log(edad)
+  const activo = document.createElement('p')
+  activo.classList.add('text-red-500')
+  activo.textContent = `Activo: ${persona.activo ? 'Si' : 'No'}`
+  //console.log(activo)
+
+  fragmento.appendChild(titulo)
+  fragmento.appendChild(edad)
+  fragmento.appendChild(activo)
+
+})
+
+console.log(fragmento) // Adentro tiene todos los elementos que antes colocabamos dentro del contenedor
+
+contenedor.appendChild(fragmento)

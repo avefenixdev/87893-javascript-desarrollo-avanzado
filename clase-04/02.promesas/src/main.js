@@ -39,14 +39,87 @@ function fueAlCumple(fue = false) {
     console.log(fue)
 
     const miPromesa = new Promise((res, rej) => {
-      if ( fue ) {
-        res('Fui al cumple -> Cumplí la promesa')
-      } else {
-        rej('No se cumplió -> No cumplí mi promesa')
-      }
+
+      setTimeout(() => {
+        if ( fue ) {
+          res('Fui al cumple -> Cumplí la promesa')
+        } else {
+          rej('No se cumplió -> No cumplí mi promesa')
+        }
+      }, 3000) // 3 seg.
+
     })
     console.log(miPromesa)
+    return miPromesa
 }
 
-//fueAlCumple() // No fui al cumple -> rejected
-fueAlCumple(true) // Fui al cumple -> fulfilled
+//const promesa = fueAlCumple(true) // Fui al cumple -> cumplí -> fulfilled
+const promesa = fueAlCumple(false) // No fui al cumple -> no cumplí -> rejected
+//console.log(promesa)
+
+// ! Gestionar a una promesa, tenemos métodos (then, catch, finally)
+
+// channing
+promesa
+  .then((dataRes) => {
+    console.log(`THEN: ${dataRes}`)
+  }) // THEN -> cuando la promesa se cumpla (fulfilled)
+  .catch((err) => {
+    console.log(`CATCH: ${err}`)
+  }) // CATCH -> cuando la promesa no se cumpla (rejected)
+  .finally(() => {
+    console.log('FIN') // Tareas de limpieza -> detener la petición
+  }) // siempre
+
+// Ventas -> Inventario el producto que estoy queriendo vender.
+
+function venta(hayStock) {
+
+  const preguntaStockPromesa = new Promise((res, rej) => {
+
+    setTimeout(() => {
+      if ( hayStock ) {
+        res('Hay stock y podes vender el producto porque lo tenemos')
+      } else {
+        rej('No hay stock de ese producto que queres vender...')
+      }
+    }, 5000) // 5 seg
+
+  }) 
+
+  console.log(preguntaStockPromesa) // Promesa-> pedding
+  return preguntaStockPromesa
+
+}
+
+const promesaStock = venta(false)
+
+// Gestionamos promesa
+
+promesaStock
+  .then((data) => {
+    console.log(`THEN: ${data}`) // numero, cadena, boolean, array, objeto
+    console.log('Bueno vendemos...')// Vendedor
+  })
+  .catch((error) => {
+    console.log(`CATCH: ${error}`) // respuesta inventario
+    console.log('Alternativa o no tenemos stock') // Vendedor
+  })
+  .finally(() => {
+    console.log('FINALLY: FIN')
+  })
+
+//console.log('Siempre se ejecuto (antes la respuesta de la promesa)')
+
+let dato = null
+
+setTimeout(() => {
+  dato = [1, 2, 4, 5]
+  console.log(dato)
+  dato.forEach(d => {
+    console.log(d)
+  })
+}, 5000);
+
+console.log(dato) // null
+
