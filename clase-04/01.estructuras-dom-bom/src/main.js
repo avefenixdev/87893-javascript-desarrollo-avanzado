@@ -289,4 +289,29 @@ console.log(contenedor) // muestro el div con el contenido */
 console.log('---------------------------------------------')
 console.log('---------------------------------------------')
 
+const contenedor = document.getElementById('contenedor')
+console.log(contenedor)
 
+const personas = [
+  { nombre: 'Maxi', apellido: 'Principe', edad: 22, activo: true },
+  { nombre: 'Laura', apellido: 'Gomez', edad: 33, activo: false },
+  { nombre: 'Ana', apellido: 'Gutierrez', edad: 28, activo: true }
+]
+
+let html = ''
+
+personas.forEach(persona => {
+
+  console.log(persona)
+
+  html += `
+    <h3 class="text-xl">${persona.nombre} ${persona.apellido}</h3>
+    <p class="text-sm">Edad: ${persona.edad}</p>
+    <p class="text-red-500">Activo: ${persona.activo ? 'Si' : 'No'}</p>
+  `
+
+  console.log(html)
+})
+console.warn(html)
+
+contenedor.innerHTML = html
