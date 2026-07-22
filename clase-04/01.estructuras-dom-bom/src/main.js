@@ -255,4 +255,38 @@ boton.addEventListener("click", function () {
 // 6.2. Inyectar dentro del p a la persona. parrafo.textoContent = persona
 // 6.3. Inyectar el p dentro del contenedor contenedor.appendChild(persona)
 
-// Tiempo: 10 min + 5 min
+// Tiempo: 10 min + 5 min + 5 min
+
+console.log('---------------------------------------------')
+console.log('---------------------------------------------')
+
+// Marco
+
+/* const contenedor = document.getElementById('contenedor')
+console.dir(contenedor);
+const personas = ['Nicolas', 'Julieta', 'Matias']
+personas.forEach(persona => {
+  //console.log(element);
+  const parrafo = document.createElement('p')
+  parrafo.textContent = persona
+  contenedor.appendChild(parrafo)
+}); */
+
+// Maximiliano
+
+/* const contenedor = document.getElementById("contenedor")
+console.log(contenedor) // div seleccionado
+const personas = ['maxi', 'luis', 'laura']
+personas.forEach(function(persona) {
+  console.log(persona)
+  const parrafo = document.createElement('p')
+  parrafo.textContent = persona
+  contenedor.appendChild(parrafo)
+})
+console.log(contenedor) // muestro el div con el contenido */
+
+
+console.log('---------------------------------------------')
+console.log('---------------------------------------------')
+
+
