@@ -146,7 +146,7 @@ const obtenerTodosLosPostsAsync = async () => {
 //obtenerTodosLosPostsAsync()
 
 
-// GET ONE -> CRUD -> R:READ ->  https://jsonplaceholder.typicode.com/posts/id'   -> obtengo uno solo
+// ! GET ONE -> CRUD -> R:READ ->  https://jsonplaceholder.typicode.com/posts/id'   -> obtengo uno solo
 
 
 const obtenerUnSoloPost = (id) => {
@@ -239,12 +239,75 @@ const createPost = (nuevoPost) => {
         })
 }
 
-const post = { title: 'Este es un nuevo post', body: 'Alto nuevo post se viene...'}
+let post = { title: 'Este es un nuevo post', body: 'Alto nuevo post se viene...'}
 
 // console.log(post) // obj de js
 // console.log(JSON.stringify(post)) // objs de js convertido a una cadena
 
+//createPost(post)
 
-createPost(post)
+const createPostAsync = async (nuevoPost) => {
 
+    try {
+        const options = {
+            method: 'POST', // El método post para create
+            headers: { 'content-type': 'application/json' }, // Le envío un json
+            body: JSON.stringify(nuevoPost)  // Convertir el objeto de js en un cadena (string)
+        }
+        
+        const res = await fetch(url, options)
+        // TODO IGUAL A LO QUE YA HABÍAMOS HECHO
+
+        if (!res.ok) {
+            throw new Error(`No se pudo crear el post - status ${res.status}`)
+        }
+
+        const postCreado = await res.json()
+
+        console.log(postCreado)
+    } catch (error) {
+        console.error(error)
+    }
+  
+}
+
+post = { title: 'Este es un nuevo post', body: 'Alto nuevo post se viene...'}
+
+// createPostAsync(post)
+
+// ! DELETE -> CRUD -> D:DELETE -> https://jsonplaceholder.typicode.com/posts/id -> que post quiero eliminar
+
+const borrarUnPost = (id) => {
+
+    const unSoloPostURL = url + id
+
+    // le indico a fetch el verbo con quiero que trabaje
+
+    const options = {
+        method: 'DELETE'
+    }
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/    
+    const promesa = fetch(unSoloPostURL, options)
+
+    promesa
+        .then(respuesta => {
+            console.log(respuesta)
+            if(!respuesta.ok) {
+                throw new Error('No se pudió')
+            }
+            return respuesta.json()
+        })
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => {
+            console.error(error)
+        })
+
+}
+
+
+borrarUnPost(5)
+borrarUnPost(10)
 
