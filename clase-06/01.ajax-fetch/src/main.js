@@ -308,6 +308,34 @@ const borrarUnPost = (id) => {
 }
 
 
-borrarUnPost(5)
-borrarUnPost(10)
+// borrarUnPost(5)
+//borrarUnPost(10)
 
+// Cuando trabajo con async await, la función ya se que va a ser async y también que tengo gestión de error con
+// try/catch
+const borrarUnPostAsync = async (id) => {
+
+    try {
+        
+        const options = {
+            method: 'DELETE'
+        }
+
+        const urlConID = url + id
+        const res = await fetch(urlConID, options) // petición async con el verbo delete
+
+        if (!res.ok) {
+            throw new Error(`No se pudo borrar el post - status: ${res.status}`)
+        }
+
+        const postBorrado = await res.json()
+
+        console.log(postBorrado) // {} <- jsonplaceholder
+
+    } catch (error) {
+        console.error(error)
+    }
+
+}
+
+// borrarUnPostAsync(3)
