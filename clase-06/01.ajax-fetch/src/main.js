@@ -382,10 +382,9 @@ const editPostPUT = (id, postEditado) => {
 
 let postActualizado = {
     title: 'Este es el post editado PUT',
-    body: 'Cuerpo del post editado...'
 }
 
-editPostPUT(3, postActualizado)
+//editPostPUT(3, postActualizado) // En el put voy a tener que enviar toda la información. Todas la caracteristicas (keys) por más que solo quiera editar una.
 
 const editPostPATCH = (id, postEditado) => {
     console.log(id)
@@ -396,7 +395,7 @@ const editPostPATCH = (id, postEditado) => {
     //console.log(urlEdicion)
     // 2. crear el objeto de configuración de fetch
     const options = {
-        method: 'PUT',
+        method: 'PATCH',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(postEditado) // el protocolo http, no entiendo objs de js. convertir el obj de js en una cadena
     }
@@ -427,9 +426,80 @@ const editPostPATCH = (id, postEditado) => {
 
 postActualizado = {
     title: 'Este es el post editado PATCH',
-    body: 'Cuerpo del post editado...'
 }
 
-editPostPATCH(3, postActualizado)
+//editPostPATCH(3, postActualizado)
 
+const editPostPUTAsync = async (id, postEditado) => {
 
+    try {
+
+        // armar la url de la petición
+        const urlEdit = url + id
+
+        // configuro el fetch
+        const options = {
+            method: 'PUT',
+            headers: { 'content-type': 'application/json'},
+            body: JSON.stringify(postEditado)
+        }
+
+        const res = await fetch(urlEdit, options)
+
+        // todo igual a lo anterior
+
+        if (!res.ok) {
+            throw new Error(`No se pudió | ${res.status}`)
+        }
+
+        const postActualizado = await res.json()
+
+        console.log(postActualizado)
+        
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+let postModificado = {
+    title: 'Otro post editado con PUT'
+}
+
+//editPostPUTAsync(4, postModificado)
+
+const editPostPATCHAsync = async (id, postEditado) => {
+
+    try {
+
+        // armar la url de la petición
+        const urlEdit = url + id
+
+        // configuro el fetch
+        const options = {
+            method: 'PATCH',
+            headers: { 'content-type': 'application/json'},
+            body: JSON.stringify(postEditado)
+        }
+
+        const res = await fetch(urlEdit, options)
+
+        // todo igual a lo anterior
+
+        if (!res.ok) {
+            throw new Error(`No se pudió | ${res.status}`)
+        }
+
+        const postActualizado = await res.json()
+
+        console.log(postActualizado)
+        
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+postModificado = {
+    title: 'Otro post editado con PATCH'
+}
+
+editPostPATCHAsync(4, postModificado)
