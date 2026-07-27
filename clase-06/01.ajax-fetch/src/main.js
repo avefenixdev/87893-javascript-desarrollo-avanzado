@@ -502,4 +502,102 @@ postModificado = {
     title: 'Otro post editado con PATCH'
 }
 
-editPostPATCHAsync(4, postModificado)
+//editPostPATCHAsync(4, postModificado)
+
+
+const peticionHTTP = async (mensaje, url, options = {}) => {
+    console.log(mensaje)
+    console.log(url)
+    console.log(options)
+    try {
+        const res = await fetch(url, options)
+
+        if (!res.ok) {
+            throw new Error(`${mensaje} - ${res.status}`)
+        }
+
+        const data = await res.json()
+
+        return data
+       
+    } catch (error) {
+        throw error
+    }
+}
+
+const urlProductos = 'https://fakestoreapi.com/products/'
+// ! GET ALL -> 
+const allProductos = async (url) => {
+
+    try {
+        const data = await peticionHTTP('No se pudieron obtener todos los productos', url)
+        console.log(data)
+        
+    } catch (error) {
+        console.error(error)
+    }
+
+}
+
+// allProductos(urlProductos)
+
+// ! GET ONE
+
+const getOneProducto = async (url, id) => {
+
+    try {
+        const urlOne = url + id
+        const data = await peticionHTTP(`No se obtener el producto con el id: ${id}`, urlOne)
+        console.log(data)
+    } catch (error) {
+        console.error(error)   
+    }
+
+}
+
+// getOneProducto(urlProductos, 3)
+
+const createProducto = async (url, productoNuevo) => {
+
+    try {
+        const options = {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(productoNuevo)
+        }
+
+        const data = await peticionHTTP(`No se pudo crear el produccto`, url, options)
+        console.log(data)
+    } catch (error) {
+        console.error(error)
+    }
+
+}
+
+const productoPorCrear = {
+    title: 'PC',
+    category: 'Informatica',
+    description: 'Esto es una pc de ofimatica',
+    price: 236
+}
+
+//createProducto(urlProductos, productoPorCrear)
+
+// DELETE
+
+const deleteProducto = async (url, id) => {
+
+    try {
+        const options = {
+            method: 'DELETE'
+        }
+        const urlBorrado = url + id
+        const data = await peticionHTTP('No se pudo borrar el producto', urlBorrado, options)
+        console.log(data)
+        
+    } catch (error) {
+        throw error        
+    }
+}
+
+deleteProducto(urlProductos, 4)
