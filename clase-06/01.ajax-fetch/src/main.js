@@ -339,3 +339,97 @@ const borrarUnPostAsync = async (id) => {
 }
 
 // borrarUnPostAsync(3)
+
+// ! PUT/PATCH -> CRUD -> U:UPDATE -> https://jsonplaceholder.typicode.com/posts/id -> el post editado
+
+const editPostPUT = (id, postEditado) => {
+    console.log(id)
+    console.log(postEditado)
+
+    // 1. crear la url para poder editar el post necesario
+    const urlEdicion = url + id
+    //console.log(urlEdicion)
+    // 2. crear el objeto de configuración de fetch
+    const options = {
+        method: 'PUT',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(postEditado) // el protocolo http, no entiendo objs de js. convertir el obj de js en una cadena
+    }
+    // 3. hacer petición
+    const promesa = fetch(urlEdicion, options)
+
+    // 4. gestionar la promesa
+    promesa
+        .then(res => {
+            console.log(res)
+
+            if (!res.ok) {
+                throw new Error(`No se pudo editar el recurso - status: ${res.status}`)
+            }
+
+            // retorno la promesa del .json() para tratarla en el siguiente then()
+            return res.json()
+        })
+        .then(data => {
+            console.log(data) // obj ya editado. listo
+        })
+        .catch(err => {
+            console.error(err)
+        })
+
+
+}
+
+let postActualizado = {
+    title: 'Este es el post editado PUT',
+    body: 'Cuerpo del post editado...'
+}
+
+editPostPUT(3, postActualizado)
+
+const editPostPATCH = (id, postEditado) => {
+    console.log(id)
+    console.log(postEditado)
+
+    // 1. crear la url para poder editar el post necesario
+    const urlEdicion = url + id
+    //console.log(urlEdicion)
+    // 2. crear el objeto de configuración de fetch
+    const options = {
+        method: 'PUT',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(postEditado) // el protocolo http, no entiendo objs de js. convertir el obj de js en una cadena
+    }
+    // 3. hacer petición
+    const promesa = fetch(urlEdicion, options)
+
+    // 4. gestionar la promesa
+    promesa
+        .then(res => {
+            console.log(res)
+
+            if (!res.ok) {
+                throw new Error(`No se pudo editar el recurso - status: ${res.status}`)
+            }
+
+            // retorno la promesa del .json() para tratarla en el siguiente then()
+            return res.json()
+        })
+        .then(data => {
+            console.log(data) // obj ya editado. listo
+        })
+        .catch(err => {
+            console.error(err)
+        })
+
+
+}
+
+postActualizado = {
+    title: 'Este es el post editado PATCH',
+    body: 'Cuerpo del post editado...'
+}
+
+editPostPATCH(3, postActualizado)
+
+
