@@ -1,1 +1,3 @@
 node_modules/
+tmp/mis-uploads/*.jpg
+tmp/mis-uploads/*.jpeg
