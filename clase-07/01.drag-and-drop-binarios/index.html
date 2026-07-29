@@ -9,9 +9,9 @@
   <body>
    
     
-    <h1 id="titulo-principal" class="text-blue-500">Drag and Drop Binarios</h1>
-    <hr>
     <main class="container mx-auto mt-8">
+      <h1 id="titulo-principal" class="text-blue-500">Drag and Drop Binarios</h1>
+      <hr class="mb-8">
       <div class="flex items-center justify-center w-full">
         <label id="drop-area" class="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-2xl cursor-pointer transition 
             border-gray-300 bg-gray-50 hover:bg-gray-100 hover:border-blue-400 focus-within:border-blue-500 focus-within:ring-2 
@@ -26,11 +26,12 @@
             <p class="mb-2 text-sm font-semibold">Drag & Drop or <span class="tex-blue-600">Click to Upload</span></p>
             <p class="text-xs text-gray-400">PNG, JPG, WEBP</p>
           </div>
+          <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types -->
+          <!-- <input type="file" class="" id="input-file" accept="image/*"> -->
+          <!-- <input type="file" class="" id="input-file" accept="text/*"> -->
+          <input type="file" class="" id="input-file" accept=".jpg,.png,.webp">
+          <!-- <input type="file" class="" id="input-file" accept=".jpg,.png,.webp" multiple required disabled capture> -->
 
-          <input type="file" class="" id="input-file">
-
-          
-          
         </label>
       </div>
     <img alt="preview" id="preview" class="hidden inset-0 object-cover mt-10 w-60 h-60 rounded2xl">
