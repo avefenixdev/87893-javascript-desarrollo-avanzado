@@ -5,6 +5,40 @@ const inputFile = document.querySelector('#input-file') // selectores css -> . p
 // console.log(dropArea)
 // console.log(inputFile)
 
+const handleRequestBackendLocal = async ( archivo ) => {
+
+    try {
+        const url = 'http://localhost:8080/subida-archivos'
+
+        // API -> Facilita la gestión de formularios con JS
+        // FormData() -> Un objeto de javascript que modela los elementos que tienen dentro los formularios. 
+        // key/clave -> archivo 
+        // value/valor -> File (archivo)
+        
+        // https://developer.mozilla.org/en-US/docs/Web/API/FormData
+        const formData = new FormData()
+        formData.append('archivo', archivo)
+
+        const options = {
+            method: 'POST',
+            body: formData
+        }
+
+        const res = await fetch(url, options)
+
+        if ( !res.ok ) {
+            throw new Error('No se pudo...')
+        }
+
+        const data = await res.text() // si fuera un json -> .json()
+        console.log(data)
+
+    } catch (error) {
+        console.error(error)
+    }
+
+}
+
 const handleFile = (archivo) => {
     //console.log('Recibí el archivo ---')
     //console.log(archivo)
@@ -35,7 +69,8 @@ const agregarEventoChange = (inputFile) => {
         //console.dir(inputFile.files[0])
         const archivo = e.target.files[0]
         //console.log(archivo)
-        handleFile(archivo)
+        handleFile(archivo) // previsualización
+        handleRequestBackendLocal(archivo) // petición binaria
     })
 
 }
@@ -64,7 +99,8 @@ const agregarEventoDragDrop = (dropArea) => {
 
         console.dir(e.dataTransfer.files[0])
         const archivo = e.dataTransfer.files[0]
-        handleFile(archivo)
+        handleFile(archivo) // previsualización
+        handleRequestBackendLocal(archivo) // petición binaria
     })
 }
 
