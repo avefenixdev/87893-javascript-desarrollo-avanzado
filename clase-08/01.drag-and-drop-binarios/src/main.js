@@ -42,6 +42,45 @@ const handleRequestBackendLocal = async ( archivo ) => {
 
 }
 
+const handleRequestBackendRemoto = async ( archivo ) => {
+
+    try {
+        const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME
+        const UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET
+        console.log(CLOUD_NAME)
+        console.log(UPLOAD_PRESET)
+        // https://api.cloudinary.com/v1_1/<cloud-name>/upload
+        const URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/upload`
+        console.log(URL)
+
+        const formData = new FormData()
+        console.log(archivo)
+        formData.append('file', archivo) // Cloudinary está esperando el name -> 'name'
+        formData.append('upload_preset', UPLOAD_PRESET)
+
+        const options = {
+            method: 'POST',
+            body: formData
+        }
+
+        const res = await fetch(URL, options)
+
+        if ( !res.ok ) throw new Error('No se pudo subir la imagen')
+
+        const data = await res.json() // Cloudinary me devuelve un json
+
+        console.log(data)
+
+        return data.secure_url
+        
+    } catch (error) {
+        console.error(error)
+    }
+
+}
+
+
+
 const handleFile = (archivo) => {
     //console.log('Recibí el archivo ---')
     //console.log(archivo)
@@ -73,7 +112,8 @@ const agregarEventoChange = (inputFile) => {
         const archivo = e.target.files[0]
         //console.log(archivo)
         handleFile(archivo) // previsualización
-        handleRequestBackendLocal(archivo) // petición binaria
+        //handleRequestBackendLocal(archivo) // petición binaria
+        handleRequestBackendRemoto(archivo) // petición binaria
     })
 
 }
@@ -103,7 +143,8 @@ const agregarEventoDragDrop = (dropArea) => {
         console.dir(e.dataTransfer.files[0])
         const archivo = e.dataTransfer.files[0]
         handleFile(archivo) // previsualización
-        handleRequestBackendLocal(archivo) // petición binaria
+        // handleRequestBackendLocal(archivo) // petición binaria
+         handleRequestBackendRemoto(archivo) // petición binaria
     })
 }
 
