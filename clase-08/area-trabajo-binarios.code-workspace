@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "01.drag-and-drop-binarios",
+			"name": "front-vite"
+		},
+		{
+			"path": "02.backend-binarios",
+			"name": "back-node"
+		}
+	],
+	"settings": {}
+}

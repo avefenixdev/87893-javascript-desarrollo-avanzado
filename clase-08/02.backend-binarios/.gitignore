@@ -1,0 +1,4 @@
+node_modules/
+tmp/mis-uploads/*.jpg
+tmp/mis-uploads/*.jpeg
+tmp/mis-uploads/*.webp
