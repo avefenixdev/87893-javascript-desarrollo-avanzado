@@ -1,5 +1,8 @@
 import './style.css'
 
+// ! ERROR DE CORS
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS
+
 const dropArea = document.getElementById('drop-area')
 const inputFile = document.querySelector('#input-file') // selectores css -> . para la clase | # para el id
 // console.log(dropArea)
