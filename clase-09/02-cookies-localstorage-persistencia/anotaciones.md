@@ -26,3 +26,25 @@ touch data/db.json
 ```sh
 npm run server
 ```
+
+# Revisar versiones de paquetes en NPM
+
+```sh
+npm outdated
+```
+
+## Librería dedicada que debemos instalar globamente
+
+```sh
+npm i npm-check-updates -g
+```
+
+> Verificar versiones
+
+```sh
+ncu
+```
+
+# Versionado semántico
+
+<https://semver.org/lang/es/>
