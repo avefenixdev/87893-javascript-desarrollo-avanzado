@@ -3,6 +3,10 @@
 //export const storage = {  // ! 1 manera
 const storage = {
     set: (key, value) => {
+        if ( typeof value === 'string') {
+            window.localStorage.setItem(key, value)
+            return // break
+        } 
         window.localStorage.setItem(key, JSON.stringify(value))
     },
     get(key) {
@@ -17,11 +21,13 @@ const storage = {
     },
     getManejoError: (key) => {
         
+        const value = localStorage.getItem(key)
+
         try {
-            const value = localStorage.getItem(key)
             return JSON.parse(value)
         } catch (error) {
-            console.error(error)
+            //console.error(error)
+            console.log('No pude hacer el parse ---> devuelve el valor por que es una cadena')
             return value
         }
 
@@ -44,7 +50,7 @@ export default storage // Funcionalidad principal, solo puedo tener una.
 //     ⬇️ func pri | ⬇️ ⬇️ func extra
 
 // ! Forma de incoporar (usar) el módulo en otros archivos
-//import storage, {PI} from 'react'
+//import storage, {PI} from 'storage'
 
 // ! Ejemplo de como estaría exportado REACT
 /* 
