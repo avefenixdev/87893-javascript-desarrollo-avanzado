@@ -10,14 +10,15 @@ const storage = {
         window.localStorage.setItem(key, JSON.stringify(value))
     },
     get(key) {
-        const value = localStorage.getItem(key)
-
+        console.log(key)
+        const value = localStorage.getItem(key) // Siempre el localStorage -> me devuelve una cadena...
+        console.log(value)
         // Controlar si value es una cadena
-        if ( typeof value === 'string' ) {
+        if ( typeof value === 'string' ) { /* No me sirve controlar si valor es una cadena -> siempre va a ser una cadena */
             return value
         }
-
-        return JSON.parse(value)
+        return JSON.parse(value) 
+            
     },
     getManejoError: (key) => {
         
